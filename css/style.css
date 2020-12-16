@@ -39,6 +39,10 @@
     --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
     --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+
+    /* transition timing */
+    --global-transition-timing: 0.2s;
 }
 
 
@@ -430,11 +434,17 @@ input:disabled {
     border: 2px solid var(--global-color-alpha-dark);
 }
 
+.c-custom-option__fake-input--radio:hover{
+    transition: var(--global-transition-timing);
+    background-color: var(--global-color-alpha-light);
+}
+
 /* checked state */
 
 .c-option--hidden:checked + .c-custom-option .c-custom-option__fake-input {
     background: var(--global-color-alpha-dark);
     color: var(--global-color-neutral-xxxx-light);
+    transition: var(--global-transition-timing);
 }
 
 .c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
@@ -467,6 +477,10 @@ input:disabled {
     border-color: var(--global-color-alpha-x-dark);
 }
 
+.c-input__email:focus{
+    outline: none;
+}
+
 .c-input__submit{
     padding: 16px 0;
     border-radius: 24px;
@@ -474,6 +488,18 @@ input:disabled {
     color: var(--global-color-neutral-xxxx-light);
     border: none;
     margin-top: var(--global-whitespace-md);
+    box-shadow: var(--global-shadow);
+}
+
+.c-input__submit:hover{
+    background-color: var(--global-color-alpha-dark);
+    transition: var(--global-transition-timing);
+}
+
+.c-input__submit:focus{
+    outline: none;
+    background-color: var(--global-color-alpha-x-dark);
+    transition: var(--global-transition-timing);
 }
 
 .has-error{
