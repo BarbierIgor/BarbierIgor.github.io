@@ -11,6 +11,8 @@ let grassPollen = ""
 let treePollen = ""
 let weedPollen = ""
 
+let email = {}
+
 const getAQI = async (lat, long) => {
 		const request = await fetch(`https://api.ambeedata.com/latest/by-lat-lng?lat=${lat}&lng=${long}`, {
         "method": "GET",
@@ -113,12 +115,51 @@ let showPollen = function(){
     dataText4.innerHTML = ""
 }
 
+const isValidEmailAddress = function(emailAddress) {
+	// Basis manier om e-mailadres te checken.
+	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress);
+};
+
+const isEmpty = function(fieldValue) {
+	return !fieldValue || !fieldValue.length;
+};
+
+const addErrors = function(formField) {
+    formField.classList.add("has-error");
+}
+
+const removeErrors = function(formField) {
+    formField.errormsg.innerText = "";
+    formField.input.classList.remove("has-error")
+}
+
+const enableListenerEmail = function(){
+    email.input.addEventListener("blur", function(){
+        if (isValidEmailAddress(email.input.value)){
+            email.input.removeEventListener('input', enableListenerEmail);
+            removeErrors(email);
+        } else{
+            if(isEmpty(email.input.value)) {
+                email.errormsg.innerText = 'This field is required';
+                addErrors(email.input)
+            } else{
+                email.errormsg.innerText = 'Invalid emailaddress'
+                addErrors(email.input)
+            }
+        }
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM Loaded")
     const aqiPage = document.querySelector(".js-app-aqi")
-
+    email.input = document.querySelector(".js-input__email")
+    email.errormsg = document.querySelector(".js-error-email")
     if(aqiPage){
         getLocation()
         getPollen()
+    }
+    if(email.input){
+        enableListenerEmail()
     }
 });

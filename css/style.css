@@ -20,6 +20,8 @@
     --global-color-neutral-xxx-dark: #232226;
     --global-color-neutral-xxxx-dark: #17161a;
 
+    --global-color-error: #ff2814;
+
 
     /* borders */
     --global-border-radius: 8px;
@@ -454,6 +456,11 @@ input:disabled {
     email input
 */
 
+.c-input__error{
+    color: #ff2814;
+    font-size: 12pt;
+}
+
 .c-input__email{
     padding: 10px 16px;
     border-radius: 24px;
@@ -467,6 +474,10 @@ input:disabled {
     color: var(--global-color-neutral-xxxx-light);
     border: none;
     margin-top: var(--global-whitespace-md);
+}
+
+.has-error{
+    border-color: var(--global-color-error);
 }
 
 /*
