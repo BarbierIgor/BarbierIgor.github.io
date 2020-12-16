@@ -1,0 +1,538 @@
+
+:root{
+
+    /*colors*/
+    --global-color-alpha-x-light: #D8EBF2;
+    --global-color-alpha-light: #B6DBF2;
+    --global-color-alpha: #77B3D9;
+    --global-color-alpha-dark: #348ABF;
+    --global-color-alpha-x-dark: #0477BF;
+
+    --global-color-neutral-xxxx-light:#ffffff;
+    --global-color-neutral-xxx-light: #f6f5f7;
+    --global-color-neutral-xx-light: #ecebed;
+    --global-color-neutral-x-light: #dcdae0;
+    --global-color-neutral-light: #c8c6cc;
+    --global-color-neutral: #a2a1a6;
+    --global-color-neutral-dark: #787480;
+    --global-color-neutral-x-dark: #605d66;
+    --global-color-neutral-xx-dark: #47454d;
+    --global-color-neutral-xxx-dark: #232226;
+    --global-color-neutral-xxxx-dark: #17161a;
+
+
+    /* borders */
+    --global-border-radius: 8px;
+
+    /*shadows*/
+    --global-shadow: 0px 3px 5px 3px rgba(0,0,0,0.16);
+
+    /* baseline */
+    --global-baseline: 8px;
+
+    --global-whitespace-xs: calc(var(--global-baseline) * .5); /* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+    --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+}
+
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+
+html {
+    font-family: "Roboto", Helvetica, arial, sans-serif;
+    font-weight: 400;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: var(--global-color-alpha-light);
+    --c-app__topbar-height: calc(var(--global-baseline) * 14);
+    min-height: 100vh;
+}
+
+
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    color: var(--global-color-neutral-xxxx-dark);
+}
+
+h1 {
+    font-size: 24px;
+    line-height: 48px;
+    margin: 0 0 var(--global-whitespace-md);
+    font-weight: 500;
+    color: var(--global-color-neutral-xxxx-light);
+}
+
+h2 {
+    font-size: 18pt;
+    font-weight: 400;
+    line-height: 40px;
+    margin: 0 0 var(--global-baseline);
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 var(--global-baseline);
+    color: var(--global-color-neutral-xx-dark);
+}
+
+ul,
+ol {
+    padding-left: 0;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    transition: all var(--transition-alpha);
+    color: var(--color-alpha);
+    outline-color: var(--color-alpha);
+    outline-width: medium;
+    outline-offset: 2px;
+}
+
+a:visited,
+a:active {
+    color: var(--color-alpha);
+}
+
+a:hover,
+a:focus {
+    color: var(--color-alpha-light);
+}
+
+label,
+input {
+    display: inline-block;
+}
+
+select {
+    width: 100%;
+}
+
+input::placeholder {
+    color: var(--color-neutral);
+}
+
+input:disabled {
+    cursor: not-allowed;
+}
+
+@media screen and (min-width: 62em) {
+    h1{
+        font-size: 32pt;
+    }
+    h2{
+        font-size: 24pt;
+    }
+    p{
+        font-size: 16pt;
+    }
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+.o-page--fill{
+    min-height: 100vh;
+}
+
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@media screen and (min-width: 62em){
+    .o-page--center{
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: header
+    ---
+    header of the main website
+*/
+
+.c-app__header{
+    padding: var(--global-whitespace) 0 0 var(--global-whitespace);
+}
+
+.c-app__header-logo{
+    width: 56px;
+    height: 56px;
+}
+
+.c-app__header h1{
+    margin-bottom: 0;
+    padding-left: var(--global-whitespace-md);
+}
+
+@media screen and (min-width: 62em){
+    .c-app--landing{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 80%;
+        margin: auto;
+    }
+
+    .c-app__header-landing{
+        grid-row: 2;
+        grid-column: 1 !important; 
+    }
+    .c-landing-text{
+        grid-row: 3;
+        grid-column: 1;
+    }
+    .c-landing__form{
+        grid-row: 4;
+        grid-column: 1;
+    }
+    .c-landing-mockup{
+        grid-column: 2;
+        grid-row: span 5;
+    }
+}
+
+
+/*
+    Component: card
+    ---
+    ...
+*/
+
+.c-card {
+    margin: var(--global-whitespace);
+    margin-top: var(--global-whitespace-lg);
+    background-color: var(--global-color-neutral-xxxx-light);
+    padding: var(--global-whitespace);
+    border-radius: var(--global-border-radius);
+    box-shadow: var(--global-shadow);
+}
+
+.c-card__meter{
+    margin: var(--global-whitespace) 0;
+}
+
+.c-card__meter-arrow{
+    transform-origin: bottom center;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    -ms-transition: -ms-transform .8s ease-in-out;
+    transition: transform .8s ease-in-out;
+}
+
+
+.c-card__title{
+    padding-top: 0;
+}
+
+
+.c-card__data{
+    margin: 16px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c-card__data-text{
+    width: 50%;
+}
+
+/*
+    Component: landing
+    ---
+    main landing page
+*/
+
+.c-landing-text{
+    padding-top: var(--global-whitespace-lg);
+    width: 75%;
+}
+
+.c-landing-text p{
+    color: var(--global-color-neutral-xxx-dark);
+}
+
+.c-landing__form{
+    padding-top: var(--global-whitespace-lg);
+}
+
+/*
+    Component: options
+    ---
+    option radio buttons
+*/
+.c-field--option{
+    display: flex;
+    align-items: center;
+    padding-right: var(--global-baseline);
+}
+
+
+@media screen and (min-width: 62em) {
+    .c-app {
+        display: grid;
+        grid-gap: var(--global-whitespace-lg);
+        margin-bottom: var(--global-whitespace-md);
+        grid-template-columns: repeat(12, 1fr);
+    }
+    .c-app__header{
+        grid-column: 2 / span 12;
+    }
+    .c-card{
+        margin-top: 0;
+    }
+    .c-card-1 {
+        grid-column: 2 / span 5;
+        grid-row: span 2;
+    }
+    .c-card-2{
+        grid-column: span 5;
+    }
+    .c-card__meter{
+        padding: var(--global-whitespace-xl) 0;
+    }
+    .c-card__data{
+        padding-top: var(--global-whitespace-lg);
+    }
+    .c-card__data-text{
+        margin-bottom: var(--global-whitespace);
+    }
+}
+
+/*
+    Component: fake option
+    ---
+    styling form
+*/
+.c-custom-option__fake-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    transition: all var(--global-transitionTiming);
+    box-shadow: var(--global-shadow, 0);
+}
+
+.c-custom-option__fake-input--radio{
+    width: auto;
+    height: auto;
+    padding: var(--global-baseline) var(--global-whitespace-md);
+    border-radius: 24px;
+    border: 2px solid var(--global-color-alpha-dark);
+}
+
+/* checked state */
+
+.c-option--hidden:checked + .c-custom-option .c-custom-option__fake-input {
+    background: var(--global-color-alpha-dark);
+    color: var(--global-color-neutral-xxxx-light);
+}
+
+.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
+    opacity: 1; /* Show the symbol when the invisible checkbox/radio button is checked */
+    transform: scale(1);
+}
+
+/* focused and active state */
+
+.c-option--hidden:focus + .c-custom-option,
+.c-option--hidden:active + .c-custom-option .c{
+    --custom-option-borderColor: var(--global-color-alpha-x-dark);
+    --custom-option-boxShadow: var(--global-shadow);
+}
+
+/*
+    Component: input
+    ---
+    email input
+*/
+
+.c-input__email{
+    padding: 10px 16px;
+    border-radius: 24px;
+    border-color: var(--global-color-alpha-x-dark);
+}
+
+.c-input__submit{
+    padding: 16px 0;
+    border-radius: 24px;
+    background-color: var(--global-color-alpha-x-dark);
+    color: var(--global-color-neutral-xxxx-light);
+    border: none;
+    margin-top: var(--global-whitespace-md);
+}
+
+/*
+    Component: mockup
+    ---
+    mockup on landing page
+*/
+
+.c-mockup-image{
+    width: 100%;
+}
+
+@media screen and (min-width: 62em){
+    .c-mockup-image{
+        width: 70%;
+    }
+}
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: padding
+    ---
+    padding options
+*/
+.u-remove-padding-left{
+    padding-left: 0;
+}
+
+/*
+    Utilities: algin
+    ---
+    Utility classes align text or components
+*/
+
+.u-align-text-center {
+    text-align: center;
+}
+
+.u-align-center {
+    margin: 0 auto;
+}
+
+/*
+    Utilities: flex
+    ---
+    Utility classes for flexbox
+*/
+.u-display-flex{
+    display: flex;
+}
+
+.u-flex-vert-center{
+    align-items: center;
+}
+
+.u-flex-hori-center{
+    justify-content: center;
+}
+
+.u-flex-align-wrap{
+    flex-wrap: wrap;
+}
+
+.u-flex-algin-column{
+    flex-direction: column;
+}
